@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>DarkPlay - Jogos Online</title>
@@ -14,7 +16,8 @@
 <header class="header">
 
     <div class="logo">
-        <span>🎮</span> DarkPlay
+        <span>🎮</span>
+        DarkPlay
     </div>
 
     <nav>
@@ -24,13 +27,17 @@
     </nav>
 
     <div class="search">
+
         <input
             type="text"
             id="searchInput"
             placeholder="Pesquisar jogos..."
         >
 
-        <button onclick="searchGames()">🔎</button>
+        <button onclick="searchGames()">
+            🔎
+        </button>
+
     </div>
 
 </header>
@@ -38,186 +45,273 @@
 
 <main>
 
-<section class="hero" id="inicio">
+    <!-- HERO -->
 
-    <div class="hero-content">
+    <section class="hero" id="inicio">
 
-        <span class="badge">🔥 JOGOS ONLINE</span>
+        <div class="hero-content">
 
-        <h1>
-            Jogue grátis.<br>
-            <span>Divirta-se.</span>
-        </h1>
+            <span class="badge">
+                🔥 JOGOS ONLINE
+            </span>
 
-        <p>
-            Encontre jogos incríveis para jogar diretamente
-            no navegador.
-        </p>
+            <h1>
+                Jogue grátis.<br>
+                <span>Divirta-se.</span>
+            </h1>
 
-        <button class="main-button" onclick="scrollToGames()">
-            🎮 JOGAR AGORA
-        </button>
+            <p>
+                Encontre jogos incríveis para jogar
+                diretamente no navegador.
+            </p>
 
-    </div>
+            <button
+                class="main-button"
+                onclick="scrollToGames()"
+            >
+                🎮 JOGAR AGORA
+            </button>
 
-</section>
-
-
-<section class="section">
-
-    <div class="section-title">
-
-        <div>
-            <span class="small-title">🔥 EM DESTAQUE</span>
-            <h2>Jogos populares</h2>
         </div>
 
-        <a href="#jogos">Ver todos →</a>
-
-    </div>
+    </section>
 
 
-    <div class="games-grid" id="gamesGrid">
+    <!-- JOGOS -->
 
+    <section
+        class="section"
+        id="jogos"
+    >
 
-        <article class="game-card" data-name="Click Master">
+        <div class="section-title">
 
-            <div class="game-image clicker">
+            <div>
 
-                <span class="game-icon">🖱️</span>
-
-                <span class="game-tag">
-                    NOVO
+                <span class="small-title">
+                    🔥 EM DESTAQUE
                 </span>
 
-            </div>
-
-            <div class="game-info">
-
-                <h3>Click Master</h3>
-
-                <p>🔥 Arcade</p>
-
-                <button onclick="openGame('games/clicker.html')">
-                    JOGAR
-                </button>
+                <h2>
+                    Jogos populares
+                </h2>
 
             </div>
 
-        </article>
+            <span class="game-count" id="gameCount">
+                3 jogos
+            </span>
 
-
-        <article class="game-card" data-name="Snake Classic">
-
-            <div class="game-image snake">
-
-                <span class="game-icon">🐍</span>
-
-            </div>
-
-            <div class="game-info">
-
-                <h3>Snake Classic</h3>
-
-                <p>🧩 Casual</p>
-
-                <button onclick="openGame('games/snake.html')">
-                    JOGAR
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="game-card" data-name="Coming Soon">
-
-            <div class="game-image coming">
-
-                <span class="game-icon">🚀</span>
-
-            </div>
-
-            <div class="game-info">
-
-                <h3>Space Adventure</h3>
-
-                <p>🚀 Aventura</p>
-
-                <button onclick="comingSoon()">
-                    EM BREVE
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="game-card" data-name="Coming Soon">
-
-            <div class="game-image coming">
-
-                <span class="game-icon">🏎️</span>
-
-            </div>
-
-            <div class="game-info">
-
-                <h3>Speed Racer</h3>
-
-                <p>🏎️ Corrida</p>
-
-                <button onclick="comingSoon()">
-                    EM BREVE
-                </button>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<section class="categories" id="categorias">
-
-    <div class="section-title">
-
-        <div>
-            <span class="small-title">🎮 EXPLORE</span>
-            <h2>Categorias</h2>
         </div>
 
-    </div>
+
+        <div
+            class="games-grid"
+            id="gamesGrid"
+        >
 
 
-    <div class="category-grid">
+            <!-- COOKIE CLICKER -->
 
-        <button onclick="filterCategory('Arcade')">
-            🕹️
-            <strong>Arcade</strong>
-        </button>
+            <article
+                class="game-card"
+                data-name="Cookie Clicker"
+                data-category="Arcade"
+            >
 
-        <button onclick="filterCategory('Aventura')">
-            🗺️
-            <strong>Aventura</strong>
-        </button>
+                <div class="game-image cookie">
 
-        <button onclick="filterCategory('Corrida')">
-            🏎️
-            <strong>Corrida</strong>
-        </button>
+                    <span class="game-icon">
+                        🍪
+                    </span>
 
-        <button onclick="filterCategory('Casual')">
-            🧩
-            <strong>Casual</strong>
-        </button>
+                    <span class="game-tag">
+                        NOVO
+                    </span>
 
-    </div>
+                </div>
 
-</section>
+
+                <div class="game-info">
+
+                    <h3>
+                        Cookie Clicker
+                    </h3>
+
+                    <p>
+                        🍪 Arcade
+                    </p>
+
+                    <button
+                        onclick="openGame('Jogos/Clicker.html')"
+                    >
+                        JOGAR
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- SNAKE -->
+
+            <article
+                class="game-card"
+                data-name="Snake Classic"
+                data-category="Casual"
+            >
+
+                <div class="game-image snake">
+
+                    <span class="game-icon">
+                        🐍
+                    </span>
+
+                </div>
+
+
+                <div class="game-info">
+
+                    <h3>
+                        Snake Classic
+                    </h3>
+
+                    <p>
+                        🧩 Casual
+                    </p>
+
+                    <button
+                        onclick="comingSoon()"
+                    >
+                        EM BREVE
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- SPACE -->
+
+            <article
+                class="game-card"
+                data-name="Space Adventure"
+                data-category="Aventura"
+            >
+
+                <div class="game-image space">
+
+                    <span class="game-icon">
+                        🚀
+                    </span>
+
+                </div>
+
+
+                <div class="game-info">
+
+                    <h3>
+                        Space Adventure
+                    </h3>
+
+                    <p>
+                        🚀 Aventura
+                    </p>
+
+                    <button
+                        onclick="comingSoon()"
+                    >
+                        EM BREVE
+                    </button>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIAS -->
+
+    <section
+        class="categories"
+        id="categorias"
+    >
+
+        <div class="section-title">
+
+            <div>
+
+                <span class="small-title">
+                    🎮 EXPLORE
+                </span>
+
+                <h2>
+                    Categorias
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="category-grid">
+
+            <button
+                onclick="filterCategory('Arcade')"
+            >
+                🕹️
+                <strong>
+                    Arcade
+                </strong>
+            </button>
+
+
+            <button
+                onclick="filterCategory('Aventura')"
+            >
+                🗺️
+                <strong>
+                    Aventura
+                </strong>
+            </button>
+
+
+            <button
+                onclick="filterCategory('Corrida')"
+            >
+                🏎️
+                <strong>
+                    Corrida
+                </strong>
+            </button>
+
+
+            <button
+                onclick="filterCategory('Casual')"
+            >
+                🧩
+                <strong>
+                    Casual
+                </strong>
+            </button>
+
+
+            <button
+                onclick="showAllGames()"
+            >
+                🎮
+                <strong>
+                    Todos
+                </strong>
+            </button>
+
+        </div>
+
+    </section>
 
 </main>
 
@@ -229,7 +323,7 @@
     </div>
 
     <p>
-        © 2026 DarkPlay. Todos os direitos reservados.
+        © 2026 DarkPlay — Todos os direitos reservados.
     </p>
 
 </footer>
@@ -238,4 +332,5 @@
 <script src="script.js"></script>
 
 </body>
+
 </html>
