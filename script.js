@@ -1,11 +1,30 @@
+// ==========================================
+// DARKPLAY
+// SCRIPT PRINCIPAL
+// ==========================================
+
+
+// ==========================================
+// ABRIR JOGO
+// ==========================================
+
 function openGame(game) {
+
     window.location.href = game;
+
 }
 
 
+// ==========================================
+// JOGAR AGORA
+// ==========================================
+
 function scrollToGames() {
 
-    const games = document.getElementById("gamesGrid");
+    const games =
+        document.getElementById("jogos");
+
+    if (!games) return;
 
     games.scrollIntoView({
         behavior: "smooth"
@@ -14,39 +33,56 @@ function scrollToGames() {
 }
 
 
+// ==========================================
+// JOGO EM BREVE
+// ==========================================
+
 function comingSoon() {
 
     alert(
-        "🚀 Este jogo ainda está em desenvolvimento!"
+        "🚀 Este jogo ainda está sendo desenvolvido!"
     );
 
 }
 
 
-/* =========================
-   PESQUISA
-========================= */
+// ==========================================
+// PESQUISA
+// ==========================================
 
 function searchGames() {
 
     const input =
         document.getElementById("searchInput");
 
+    if (!input) return;
+
     const search =
-        input.value.toLowerCase().trim();
+        input.value
+            .toLowerCase()
+            .trim();
 
     const cards =
         document.querySelectorAll(".game-card");
+
+    let visible = 0;
 
 
     cards.forEach(card => {
 
         const name =
-            card.dataset.name.toLowerCase();
+            card
+                .getAttribute("data-name")
+                ?.toLowerCase() || "";
 
-        if (name.includes(search)) {
 
-            card.style.display = "block";
+        if (
+            name.includes(search)
+        ) {
+
+            card.style.display = "";
+
+            visible++;
 
         } else {
 
@@ -56,59 +92,61 @@ function searchGames() {
 
     });
 
+
+    updateGameCount(visible);
+
 }
 
 
-document
-    .getElementById("searchInput")
-    .addEventListener(
-        "keyup",
-        searchGames
-    );
+// ==========================================
+// PESQUISA AUTOMÁTICA
+// ==========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const input =
+            document.getElementById("searchInput");
 
 
-/* =========================
-   CATEGORIAS
-========================= */
+        if (!input) return;
+
+
+        input.addEventListener(
+            "input",
+            searchGames
+        );
+
+    }
+);
+
+
+// ==========================================
+// FILTRO DE CATEGORIA
+// ==========================================
 
 function filterCategory(category) {
 
     const cards =
         document.querySelectorAll(".game-card");
 
+    let visible = 0;
+
 
     cards.forEach(card => {
 
-        const text =
-            card.innerText.toLowerCase();
+        const cardCategory =
+            card.getAttribute("data-category");
+
 
         if (
-            category === "Arcade" &&
-            text.includes("arcade")
+            cardCategory === category
         ) {
 
-            card.style.display = "block";
+            card.style.display = "";
 
-        } else if (
-            category === "Casual" &&
-            text.includes("casual")
-        ) {
-
-            card.style.display = "block";
-
-        } else if (
-            category === "Aventura" &&
-            text.includes("aventura")
-        ) {
-
-            card.style.display = "block";
-
-        } else if (
-            category === "Corrida" &&
-            text.includes("corrida")
-        ) {
-
-            card.style.display = "block";
+            visible++;
 
         } else {
 
@@ -118,4 +156,103 @@ function filterCategory(category) {
 
     });
 
+
+    updateGameCount(visible);
+
+
+    const games =
+        document.getElementById("jogos");
+
+
+    if (games) {
+
+        games.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
 }
+
+
+// ==========================================
+// MOSTRAR TODOS
+// ==========================================
+
+function showAllGames() {
+
+    const cards =
+        document.querySelectorAll(".game-card");
+
+
+    cards.forEach(card => {
+
+        card.style.display = "";
+
+    });
+
+
+    updateGameCount(cards.length);
+
+}
+
+
+// ==========================================
+// CONTADOR DE JOGOS
+// ==========================================
+
+function updateGameCount(number) {
+
+    const counter =
+        document.getElementById("gameCount");
+
+
+    if (!counter) return;
+
+
+    counter.textContent =
+        number +
+        (
+            number === 1
+                ? " jogo"
+                : " jogos"
+        );
+
+}
+
+
+// ==========================================
+// TECLA ESC
+// ==========================================
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key !== "Escape") {
+            return;
+        }
+
+
+        const input =
+            document.getElementById("searchInput");
+
+
+        if (!input) return;
+
+
+        input.value = "";
+
+        showAllGames();
+
+    }
+);
+
+
+// ==========================================
+// LOG
+// ==========================================
+
+console.log(
+    "🎮 DarkPlay carregado!"
+);
