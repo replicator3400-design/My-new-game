@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Click Master</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: Arial;
+
+    background:
+        radial-gradient(
+            circle,
+            #303d92,
+            #08090d
+        );
+
+    color: white;
+
+}
+
+.game {
+
+    width: 420px;
+
+    max-width: 90%;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background: #11131a;
+
+    border: 1px solid #292e40;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.5);
+
+}
+
+h1 {
+
+    margin-top: 0;
+
+    font-size: 35px;
+
+}
+
+.score {
+
+    font-size: 45px;
+
+    font-weight: bold;
+
+    margin: 30px;
+
+}
+
+.click {
+
+    width: 180px;
+
+    height: 180px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #6478ff;
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 40px
+        rgba(100,120,255,.4);
+
+    transition: .1s;
+
+}
+
+.click:active {
+
+    transform: scale(.92);
+
+}
+
+.back {
+
+    display: block;
+
+    margin-top: 30px;
+
+    color: #9298ab;
+
+    text-decoration: none;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="game">
+
+    <h1>🖱️ Click Master</h1>
+
+    <p>Clique o máximo que conseguir!</p>
+
+    <div
+        class="score"
+        id="score"
+    >
+        0
+    </div>
+
+    <button
+        class="click"
+        onclick="clickButton()"
+    >
+        CLICK!
+    </button>
+
+    <a
+        class="back"
+        href="../index.html"
+    >
+        ← Voltar para os jogos
+    </a>
+
+</div>
+
+
+<script>
+
+let score = 0;
+
+
+function clickButton() {
+
+    score++;
+
+    document
+        .getElementById("score")
+        .innerText = score;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
