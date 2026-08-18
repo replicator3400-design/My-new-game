@@ -1,0 +1,169 @@
+// ==========================================
+// DARKPLAY - SCRIPT PRINCIPAL
+// ==========================================
+
+
+// ==========================================
+// ABRIR JOGO
+// ==========================================
+
+function openGame(game) {
+    window.location.href = game;
+}
+
+
+// ==========================================
+// BOTÃO "JOGAR AGORA"
+// ==========================================
+
+function scrollToGames() {
+
+    const games = document.getElementById("gamesGrid");
+
+    if (games) {
+        games.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+}
+
+
+// ==========================================
+// JOGO EM BREVE
+// ==========================================
+
+function comingSoon() {
+
+    alert("🚀 Este jogo estará disponível em breve!");
+}
+
+
+// ==========================================
+// PESQUISA DE JOGOS
+// ==========================================
+
+function searchGames() {
+
+    const input = document.getElementById("searchInput");
+
+    if (!input) return;
+
+    const search = input.value
+        .toLowerCase()
+        .trim();
+
+    const cards = document.querySelectorAll(".game-card");
+
+    cards.forEach(card => {
+
+        const name = card
+            .getAttribute("data-name")
+            ?.toLowerCase() || "";
+
+        if (name.includes(search)) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+}
+
+
+// ==========================================
+// PESQUISA ENQUANTO DIGITA
+// ==========================================
+
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        searchGames
+    );
+
+}
+
+
+// ==========================================
+// FILTRO POR CATEGORIA
+// ==========================================
+
+function filterCategory(category) {
+
+    const cards = document.querySelectorAll(".game-card");
+
+    cards.forEach(card => {
+
+        const description = card
+            .querySelector(".game-info p");
+
+        if (!description) return;
+
+        const text = description
+            .textContent
+            .toLowerCase();
+
+        if (
+            category === "Todos" ||
+            text.includes(category.toLowerCase())
+        ) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    const games = document.getElementById("gamesGrid");
+
+    if (games) {
+
+        games.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+// ==========================================
+// ESC PARA LIMPAR PESQUISA
+// ==========================================
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            const input =
+                document.getElementById("searchInput");
+
+            if (!input) return;
+
+            input.value = "";
+
+            searchGames();
+
+        }
+
+    }
+);
+
+
+// ==========================================
+// CONSOLE
+// ==========================================
+
+console.log("🎮 DarkPlay carregado com sucesso!");
